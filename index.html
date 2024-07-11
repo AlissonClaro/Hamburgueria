@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/output.css">
 
@@ -17,8 +19,7 @@
 
     <header class="w-full h-[420px] bg-zinc-900 bg-home bg-cover bg-center">
         <div class="w-full h-full flex flex-col justify-center items-center">
-            <img src="./assets/hamb-1.png" alt="logo devburguer"
-                class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"/>
+            <img src="./assets/hamb-1.png" alt="logo devburguer" class="w-32 h-32 rounded-full shadow-lg hover:scale-110 duration-200"/>
             <h1 class="text-4xl mt-4 mb-2 font-bold text-white">
                 Dev Burguer
             </h1>
@@ -215,22 +216,40 @@
     </div>
     <!-- FIM MENU -->
 
-    <!-- BUTTON CART FOOTER -->
+    <!-- MODAL CART -->
+    <div class="bg-black/60 w-full h-full fixed top-0 left-0 z-[99] items-center justify-center hidden">
 
-    <footer class="w-full bg-red-500 py-2 fixed bottom-0 z-40 flex justify-center items-center">
-        <button class="flex items-center space-x-2 bg-white text-red-500 px-4 py-2 rounded-full hover:bg-red-100 transition-colors duration-200">
-            (<span id="cart-count">2</span>)
-            <span>Veja meu carrinho</span>
-            <i class="fas fa-shopping-cart text-lg"></i>
-        </button>
-    </footer>
-    <!-- <footer class="w-full bg-red-500 py-2 bg-fixed bottom-0 z-40 flex justify-center items-center">
-        <button>
-            (<span id="cart-count">2</span>)
+        <div class="bg-white p-5 rounded-md min-w-[90%] md:min-w-[600px]">
+            <h2 class="text-center font-bold text-2xl mb-2">Carrinho de compras</h2>
+
+            <div id="cart-items" class="flex justify-between mb-2 flex-col"></div>
+
+            <p class="font-bold">Total: <span id="cart-total">R$ 0.00</span></p>
+
+            <p class="font-bold">Endereço de entrega</p>
+            <input type="text"
+            placeholder="Digite seu endereço completo"
+            id="address"
+            class="w-full border-2 p-1 rounded my-1">
+            <p class="text-red-500 hidden" id="address-warn">Digite seu endereço completo!</p>
+
+            <div class="flex items-center justify-between mt-5 w-full">
+                <button id="close-moodal-btn">Fechar</button>
+                <button id="checkout-btn" class="bg-green-600 text-white px-4 py-1">Finalizar pedido</button>
+            </div>
+        </div>
+    </div>
+    <!-- FIM MODAL CART -->
+
+    <!-- BUTTON CART FOOTER -->
+    <footer class="w-full font-bold text-white bg-red-500 py-2 fixed bottom-0 z-40 flex justify-center items-center">
+        <button class="flex items-center gap-2 text-white font-bold"
+        id="cart-btn">
+            (<span id="cart-count">0</span>)
             Veja meu carrinho
             <i class="fa fa-cart-plus text-lg text-white"></i>
         </button>
-    </footer> -->
+    </footer>
     <!-- FIM BUTTON CART FOOTER -->
 
 </body>
