@@ -121,7 +121,7 @@ function removeItemCart(name) {
     if (index !== -1) {
         const item = cart[index]
 
-        if(item.qtd > 1) {
+        if (item.qtd > 1) {
             item.qtd -= 1
             updateCartModal()
             return;
@@ -136,18 +136,42 @@ function removeItemCart(name) {
 addressInput.addEventListener('input', (event) => {
     let inputValue = event.target.value
 
+    if (inputValue !== '') {
+        addressInput.classList.remove('border-red-500')
+        addressWarn.classList.add('hidden')
+    }
 })
 
 checkoutBtn.addEventListener('click', (event) => {
 
-    if(cart.length === 0) return;
-    if(addressInput.value === ''){
+    if (cart.length === 0) return;
+    if (addressInput.value === '') {
         addressWarn.classList.remove('hidden')
         addressInput.classList.add('border-red-500')
         return
     }
 })
 
+// Verificar a hora da Hamburgueria aberta e manupilar o card de horario
 
+function checkRestaurantOpen() {
+    const data = new Date()
+    const hour = data.getHours()
+    return hour >= 18 && hora < 22
+    //true = restaurante esta aberto.
+
+}
+
+
+const spanItem = document.getElementById('date-span')
+const isOpen = checkRestaurantOpen()
+
+if (isOpen) {
+    spanItem.classList.remove('bg-red-500')
+    spanItem.classList.add('bg-green-500')
+} else {
+    spanItem.classList.remove('bg-green-500')
+    spanItem.classList.add('bg-red-500')
+}
 
 
