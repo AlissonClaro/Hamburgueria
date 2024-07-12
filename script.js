@@ -3,7 +3,7 @@ const cartBtn = document.getElementById('cart-btn')
 const cartModal = document.getElementById('cart-modal')
 const cartItemsContainer = document.getElementById('cart-items')
 const cartTotal = document.getElementById('cart-total')
-const checkOut = document.getElementById('checkout-btn')
+const checkoutBtn = document.getElementById('checkout-btn')
 const closeModalBtn = document.getElementById('close-modal-btn')
 const cartCounter = document.getElementById('cart-count')
 const addressInput = document.getElementById('address')
@@ -130,8 +130,23 @@ function removeItemCart(name) {
         cart.splice(index, 1)
         updateCartModal()
     }
-
 }
+
+
+addressInput.addEventListener('input', (event) => {
+    let inputValue = event.target.value
+
+})
+
+checkoutBtn.addEventListener('click', (event) => {
+
+    if(cart.length === 0) return;
+    if(addressInput.value === ''){
+        addressWarn.classList.remove('hidden')
+        addressInput.classList.add('border-red-500')
+        return
+    }
+})
 
 
 
