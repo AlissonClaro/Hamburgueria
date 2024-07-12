@@ -142,7 +142,27 @@ addressInput.addEventListener('input', (event) => {
     }
 })
 
+// finalizar pedido
 checkoutBtn.addEventListener('click', (event) => {
+
+    const isOpen = checkRestaurantOpen()
+    if(!isOpen){
+        Toastify({
+            text: "Ops! a Hamburgueria está fechada",
+            duration: 3000,
+            destination: "https://github.com/apvarun/toastify-js",
+            newWindow: true,
+            close: true,
+            gravity: "top", // `top` or `bottom`
+            position: "left", // `left`, `center` or `right`
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            style: {
+              background: "linear-gradient(to right, #ef4444, #96c90f)",
+            },
+            onClick: function(){} // Callback after click
+          }).showToast();
+        return
+    }
 
     if (cart.length === 0) return;
     if (addressInput.value === '') {
@@ -150,6 +170,23 @@ checkoutBtn.addEventListener('click', (event) => {
         addressInput.classList.add('border-red-500')
         return
     }
+
+    // Enviar o pedido para api whats
+    const cartItems = cart.map((item) => {
+        return (
+            ` ${item.name} Quantidade: (${item.qtd}) Preço: R$ ${item.price} |`
+        )
+    }).join('')
+    
+    const message = encodeURIComponent(cartItems)
+    //Tel para enviar o pedido
+    const phone = '014981914375'
+
+    window.open(`https://wa.me/${phone}?text=${message} Endereço: ${addressInput.value}`, '_blank')
+    //
+
+    cart.length = 0
+    updateCartModal()
 })
 
 // Verificar a hora da Hamburgueria aberta e manupilar o card de horario
