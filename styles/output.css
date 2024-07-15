@@ -1951,7 +1951,7 @@ video {
 }
 
 .bg-home {
-  background-image: url('/assets/bg.png');
+  background-image: url('https://raw.githubusercontent.com/AlissonClaro/Hamburgueria/main/assets/bg.png');
 }
 
 .decoration-slice {
