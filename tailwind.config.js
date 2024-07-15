@@ -7,7 +7,7 @@ module.exports = {
     },
     extend: {
       backgroundImage:{
-      "home": "url('/assets/bg.png')"
+      "home": "url('https://raw.githubusercontent.com/AlissonClaro/Hamburgueria/main/assets/bg.png')"
       }
     },
   },
